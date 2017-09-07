@@ -22,10 +22,10 @@ public class test {
       admin.setPassword("admin1");
       admin.setEmailId("admin1@email");
       admin.setStartDate(new Date());
-      admin.setContactNo("12345");
+      admin.setContactNumber("12345");
       admin.setFirstName("adminNAme");
       admin.setLastName("lastname");
-      admin.setStatusId("1");
+      
       
       entitymanager.persist( admin );
       entitymanager.getTransaction( ).commit( );

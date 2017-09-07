@@ -18,8 +18,8 @@ public class Admin implements Serializable {
 	@Column(name="\"adminId\"")
 	private String adminId;
 
-	@Column(name="\"contactNo\"")
-	private String contactNo;
+	@Column(name="\"contactNumber\"")
+	private String contactNumber;
 
 	@Column(name="\"emailId\"")
 	private String emailId;
@@ -41,9 +41,6 @@ public class Admin implements Serializable {
 	@Column(name="\"startDate\"")
 	private Date startDate;
 
-	@Column(name="\"statusId\"")
-	private String statusId;
-
 	public Admin() {
 	}
 
@@ -55,12 +52,12 @@ public class Admin implements Serializable {
 		this.adminId = adminId;
 	}
 
-	public String getContactNo() {
-		return this.contactNo;
+	public String getContactNumber() {
+		return this.contactNumber;
 	}
 
-	public void setContactNo(String contactNo) {
-		this.contactNo = contactNo;
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
 	}
 
 	public String getEmailId() {
@@ -109,14 +106,6 @@ public class Admin implements Serializable {
 
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
-	}
-
-	public String getStatusId() {
-		return this.statusId;
-	}
-
-	public void setStatusId(String statusId) {
-		this.statusId = statusId;
 	}
 
 }

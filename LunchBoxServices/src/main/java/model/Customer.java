@@ -15,11 +15,11 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="\"userId\"")
-	private String userId;
+	@Column(name="\"customerId\"")
+	private String customerId;
 
-	@Column(name="\"contactNo\"")
-	private String contactNo;
+	@Column(name="\"contactNumber\"")
+	private String contactNumber;
 
 	@Column(name="\"deliveryAddress\"")
 	private String deliveryAddress;
@@ -40,6 +40,9 @@ public class Customer implements Serializable {
 	@Column(name="\"lastName\"")
 	private String lastName;
 
+	@Column(name="\"nickName\"")
+	private String nickName;
+
 	@Column(name="\"password\"")
 	private String password;
 
@@ -47,26 +50,23 @@ public class Customer implements Serializable {
 	@Column(name="\"startDate\"")
 	private Date startDate;
 
-	@Column(name="\"statusId\"")
-	private String statusId;
-
 	public Customer() {
 	}
 
-	public String getUserId() {
-		return this.userId;
+	public String getCustomerId() {
+		return this.customerId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
 	}
 
-	public String getContactNo() {
-		return this.contactNo;
+	public String getContactNumber() {
+		return this.contactNumber;
 	}
 
-	public void setContactNo(String contactNo) {
-		this.contactNo = contactNo;
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
 	}
 
 	public String getDeliveryAddress() {
@@ -117,6 +117,14 @@ public class Customer implements Serializable {
 		this.lastName = lastName;
 	}
 
+	public String getNickName() {
+		return this.nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
 	public String getPassword() {
 		return this.password;
 	}
@@ -131,14 +139,6 @@ public class Customer implements Serializable {
 
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
-	}
-
-	public String getStatusId() {
-		return this.statusId;
-	}
-
-	public void setStatusId(String statusId) {
-		this.statusId = statusId;
 	}
 
 }

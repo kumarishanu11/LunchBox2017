@@ -24,8 +24,8 @@ public class Vendor implements Serializable {
 	@Column(name="\"businessName\"")
 	private String businessName;
 
-	@Column(name="\"contactNo\"")
-	private String contactNo;
+	@Column(name="\"contactNumber\"")
+	private String contactNumber;
 
 	@Column(name="\"emailId\"")
 	private String emailId;
@@ -49,9 +49,6 @@ public class Vendor implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name="\"startDate\"")
 	private Date startDate;
-
-	@Column(name="\"statusId\"")
-	private String statusId;
 
 	public Vendor() {
 	}
@@ -80,12 +77,12 @@ public class Vendor implements Serializable {
 		this.businessName = businessName;
 	}
 
-	public String getContactNo() {
-		return this.contactNo;
+	public String getContactNumber() {
+		return this.contactNumber;
 	}
 
-	public void setContactNo(String contactNo) {
-		this.contactNo = contactNo;
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
 	}
 
 	public String getEmailId() {
@@ -142,14 +139,6 @@ public class Vendor implements Serializable {
 
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
-	}
-
-	public String getStatusId() {
-		return this.statusId;
-	}
-
-	public void setStatusId(String statusId) {
-		this.statusId = statusId;
 	}
 
 }

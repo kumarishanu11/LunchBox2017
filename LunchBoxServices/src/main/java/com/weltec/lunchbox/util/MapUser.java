@@ -48,7 +48,7 @@ public class MapUser {
 				vendorJPA.setEmailId(vendor.getEmailId());
 			}
 			if(vendor.getContactNo()!=null && !vendor.getContactNo().isEmpty()){
-				vendorJPA.setContactNo(vendor.getContactNo());
+				vendorJPA.setContactNumber(vendor.getContactNo());
 			}
 			if(vendor.getBusinessAddress()!=null && !vendor.getBusinessAddress().isEmpty()){
 				vendorJPA.setBusinessAddress(vendor.getBusinessAddress());
@@ -59,9 +59,7 @@ public class MapUser {
 			if(vendor.getBusinessName()!=null && !vendor.getBusinessName().isEmpty()){
 				vendorJPA.setBusinessName(vendor.getBusinessName());
 			}
-			if(vendor.getStatus()!=null && !vendor.getStatus().isEmpty()){
-				vendorJPA.setStatusId(vendor.getStatus());
-			}
+			
 			
 			Date date = new Date();
 			vendorJPA.setStartDate(date);
@@ -73,7 +71,7 @@ public class MapUser {
 			model.Customer customerJPA = new model.Customer();
 			
 			if(customer.getUserId()!=null && !customer.getUserId().isEmpty()){
-				customerJPA.setUserId(customer.getUserId());
+				customerJPA.setCustomerId(customer.getUserId());
 			}
 			if(customer.getPassword()!=null && !customer.getPassword().isEmpty()){
 				customerJPA.setPassword(customer.getPassword());
@@ -84,11 +82,14 @@ public class MapUser {
 			if(customer.getLastName()!=null && !customer.getLastName().isEmpty()){
 				customerJPA.setLastName(customer.getLastName());
 			}
+			if(customer.getNickName()!=null && !customer.getNickName().isEmpty()){
+				customerJPA.setNickName(customer.getNickName());
+			}
 			if(customer.getEmailId()!=null && !customer.getEmailId().isEmpty()){
 				customerJPA.setEmailId(customer.getEmailId());
 			}
 			if(customer.getContactNo()!=null && !customer.getContactNo().isEmpty()){
-				customerJPA.setContactNo(customer.getContactNo());
+				customerJPA.setContactNumber(customer.getContactNo());
 			}
 			if(customer.getHomeAddress()!=null && !customer.getHomeAddress().isEmpty()){
 				customerJPA.setHomeAddress(customer.getHomeAddress());
@@ -96,9 +97,7 @@ public class MapUser {
 			if(customer.getDeliveryAddress()!=null && !customer.getDeliveryAddress().isEmpty()){
 				customerJPA.setDeliveryAddress(customer.getDeliveryAddress());
 			}
-			if(customer.getStatus()!=null && !customer.getStatus().isEmpty()){
-				customerJPA.setStatusId(customer.getStatus());
-			}
+			
 			customerJPA.setStartDate(new Date());
 			
 			
@@ -125,11 +124,9 @@ public class MapUser {
 				adminJPA.setEmailId(admin.getEmailId());
 			}
 			if(admin.getContactNo()!=null && !admin.getContactNo().isEmpty()){
-				adminJPA.setContactNo(admin.getContactNo());
+				adminJPA.setContactNumber(admin.getContactNo());
 			}
-			if(admin.getStatus()!=null && !admin.getStatus().isEmpty()){
-				adminJPA.setStatusId(admin.getStatus());
-			}
+			
 			
 			adminJPA.setStartDate(new Date());
 			
@@ -150,8 +147,8 @@ public class MapUser {
 			if(vendor.getLastName()!=null && !vendor.getLastName().isEmpty()){
 			vendorEntity.setLastName(vendor.getLastName());
 			}
-			if(vendor.getContactNo()!=null && !vendor.getContactNo().isEmpty()){
-			vendorEntity.setContactNo(vendor.getContactNo());
+			if(vendor.getContactNumber()!=null && !vendor.getContactNumber().isEmpty()){
+			vendorEntity.setContactNo(vendor.getContactNumber());
 			}
 			if(vendor.getEmailId()!=null && !vendor.getEmailId().isEmpty()){
 			vendorEntity.setEmailId(vendor.getEmailId());
@@ -165,16 +162,14 @@ public class MapUser {
 			if(vendor.getHomeAddress()!=null && !vendor.getHomeAddress().isEmpty()){
 			vendorEntity.setHomeAddress(vendor.getHomeAddress());
 			}
-			if(vendor.getStatusId()!=null && !vendor.getStatusId().isEmpty()){
-			vendorEntity.setStatus(vendor.getStatusId());
-			}
+			
 						
 			return vendorEntity;
 		}
 		public Customer convertToEntity(model.Customer customer){
 			Customer customerEntity = new Customer();
-			if(customer.getUserId()!=null && !customer.getUserId().isEmpty()){
-				customerEntity.setUserId(customer.getUserId());
+			if(customer.getCustomerId()!=null && !customer.getCustomerId().isEmpty()){
+				customerEntity.setUserId(customer.getCustomerId());
 			}
 			if(customer.getPassword()!=null && !customer.getPassword().isEmpty()){
 				customerEntity.setPassword(customer.getPassword());
@@ -185,11 +180,14 @@ public class MapUser {
 			if(customer.getLastName()!=null && !customer.getLastName().isEmpty()){
 				customerEntity.setLastName(customer.getLastName());
 			}
+			if(customer.getNickName()!=null && !customer.getNickName().isEmpty()){
+				customerEntity.setNickName(customer.getNickName());
+			}
 			if(customer.getEmailId()!=null && !customer.getEmailId().isEmpty()){
 				customerEntity.setEmailId(customer.getEmailId());
 			}
-			if(customer.getContactNo()!=null && !customer.getContactNo().isEmpty()){
-				customerEntity.setContactNo(customer.getContactNo());
+			if(customer.getContactNumber()!=null && !customer.getContactNumber().isEmpty()){
+				customerEntity.setContactNo(customer.getContactNumber());
 			}
 			if(customer.getHomeAddress()!=null && !customer.getHomeAddress().isEmpty()){
 				customerEntity.setHomeAddress(customer.getHomeAddress());
@@ -197,10 +195,7 @@ public class MapUser {
 			if(customer.getDeliveryAddress()!=null && !customer.getDeliveryAddress().isEmpty()){
 				customerEntity.setDeliveryAddress(customer.getDeliveryAddress());
 			}
-			if(customer.getStatusId()!=null && !customer.getStatusId().isEmpty()){
-				customerEntity.setStatus(customer.getStatusId());
-			}
-			
+					
 			
 			return customerEntity;
 			
@@ -223,13 +218,11 @@ public class MapUser {
 			if(admin.getEmailId()!=null && !admin.getEmailId().isEmpty()){
 				adminEntity.setEmailId(admin.getEmailId());
 			}
-			if(admin.getContactNo()!=null && !admin.getContactNo().isEmpty()){
-				adminEntity.setContactNo(admin.getContactNo());
+			if(admin.getContactNumber()!=null && !admin.getContactNumber().isEmpty()){
+				adminEntity.setContactNo(admin.getContactNumber());
 			}
 			
-			if(admin.getStatusId()!=null && !admin.getStatusId().isEmpty()){
-				adminEntity.setStatus(admin.getStatusId());
-			}
+			
 			
 			return adminEntity;
 			

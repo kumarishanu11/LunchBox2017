@@ -5,9 +5,10 @@ public class User {
 	private String password;
 	private String firstName;
 	private String lastName;
+	private String nickName;
 	private String contactNo;
 	private String emailId;
-	private String status;
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -44,11 +45,12 @@ public class User {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public String getStatus() {
-		return status;
+	public String getNickName() {
+		return nickName;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
+	
 
 }
