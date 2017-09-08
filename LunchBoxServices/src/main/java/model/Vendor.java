@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -49,6 +50,10 @@ public class Vendor implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name="\"startDate\"")
 	private Date startDate;
+
+	//bi-directional many-to-one association to FoodCatalog
+	@OneToMany(mappedBy="vendor")
+	private List<FoodCatalog> foodCatalogs;
 
 	public Vendor() {
 	}
@@ -139,6 +144,28 @@ public class Vendor implements Serializable {
 
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
+	}
+
+	public List<FoodCatalog> getFoodCatalogs() {
+		return this.foodCatalogs;
+	}
+
+	public void setFoodCatalogs(List<FoodCatalog> foodCatalogs) {
+		this.foodCatalogs = foodCatalogs;
+	}
+
+	public FoodCatalog addFoodCatalog(FoodCatalog foodCatalog) {
+		getFoodCatalogs().add(foodCatalog);
+		foodCatalog.setVendor(this);
+
+		return foodCatalog;
+	}
+
+	public FoodCatalog removeFoodCatalog(FoodCatalog foodCatalog) {
+		getFoodCatalogs().remove(foodCatalog);
+		foodCatalog.setVendor(null);
+
+		return foodCatalog;
 	}
 
 }

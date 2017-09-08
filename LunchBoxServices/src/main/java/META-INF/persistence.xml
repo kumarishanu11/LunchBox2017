@@ -5,6 +5,10 @@
 	<class>model.Admin</class>
 	<class>model.Customer</class>
 	<class>model.Vendor</class>
+	<class>model.FoodCatalog</class>
+	<class>model.FoodCatalogCategoryBridge</class>
+	<class>model.FoodCategory</class>
+	<class>model.FoodItem</class>
 	<properties>
          
 	      
