@@ -18,7 +18,8 @@ public class Payment implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="\"paymentId\"")
+	@Column(name="\"paymentId\"", nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long paymentId;
 
 	@Column(name="\"amount\"")

@@ -17,7 +17,8 @@ public class FoodCategory implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="\"foodCategoryId\"")
+	@Column(name="\"foodCategoryId\"", nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long foodCategoryId;
 
 	@Temporal(TemporalType.DATE)

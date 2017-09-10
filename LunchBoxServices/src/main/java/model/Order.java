@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +17,8 @@ public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="\"orderId\"")
+	@Column(name="\"orderId\"", nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long orderId;
 
 	@Column(name="\"customerId\"")

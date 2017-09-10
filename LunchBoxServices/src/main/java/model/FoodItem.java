@@ -18,7 +18,8 @@ public class FoodItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="\"foodItemId\"")
+	@Column(name="\"foodItemId\"", nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long foodItemId;
 
 	@Column(name="\"calorie\"")

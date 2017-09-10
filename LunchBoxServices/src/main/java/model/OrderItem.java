@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.math.BigDecimal;
 
 
@@ -15,7 +16,8 @@ public class OrderItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="\"orderItemId\"")
+	@Column(name="\"orderItemId\"", nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long orderItemId;
 
 	@Column(name="\"foodItemId\"")

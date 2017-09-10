@@ -16,7 +16,8 @@ public class FoodCatalogCategoryBridge implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="\"foodCatalogCategoryBridgeId\"")
+	@Column(name="\"foodCatalogCategoryBridgeId\"", nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long foodCatalogCategoryBridgeId;
 
 	@Temporal(TemporalType.DATE)
