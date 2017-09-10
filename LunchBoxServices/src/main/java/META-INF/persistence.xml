@@ -9,6 +9,10 @@
 	<class>model.FoodCatalogCategoryBridge</class>
 	<class>model.FoodCategory</class>
 	<class>model.FoodItem</class>
+	<class>model.Feedback</class>
+	<class>model.Order</class>
+	<class>model.OrderItem</class>
+	<class>model.Payment</class>
 	<properties>
          
 	      

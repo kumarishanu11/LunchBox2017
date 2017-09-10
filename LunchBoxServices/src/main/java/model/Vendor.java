@@ -52,7 +52,9 @@ public class Vendor implements Serializable {
 	private Date startDate;
 
 	//bi-directional many-to-one association to FoodCatalog
-	@OneToMany(mappedBy="vendor")
+	
+	@OneToMany(mappedBy="vendor",targetEntity=FoodCatalog.class,
+		       fetch=FetchType.LAZY)
 	private List<FoodCatalog> foodCatalogs;
 
 	public Vendor() {

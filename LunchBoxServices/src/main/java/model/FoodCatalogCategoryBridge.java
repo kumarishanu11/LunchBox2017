@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.Date;
 
 
@@ -16,42 +17,40 @@ public class FoodCatalogCategoryBridge implements Serializable {
 
 	@Id
 	@Column(name="\"foodCatalogCategoryBridgeId\"")
-	private String foodCatalogCategoryBridgeId;
+	private long foodCatalogCategoryBridgeId;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="\"endDate\"")
 	private Date endDate;
 
 	@Column(name="\"foodCatalogId\"")
-	private String foodCatalogId;
+	private java.math.BigDecimal foodCatalogId;
 
 	@Column(name="\"foodCategoryId\"")
-	private String foodCategoryId;
+	private java.math.BigDecimal foodCategoryId;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="\"startDate\"")
 	private Date startDate;
 
 	//bi-directional many-to-one association to FoodCatalog
-	@ManyToOne
-	@JoinColumns({
-		})
+	@ManyToOne(optional=false)
+	@JoinColumn(name="\"foodCatalogId\"",referencedColumnName="\"foodCatalogId\"")
 	private FoodCatalog foodCatalog;
 
 	//bi-directional many-to-one association to FoodCategory
-	@ManyToOne
-	@JoinColumns({
-		})
+	@ManyToOne(optional=false)
+	@JoinColumn(name="\"foodCategoryId\"",referencedColumnName="\"foodCategoryId\"")
 	private FoodCategory foodCategory;
 
 	public FoodCatalogCategoryBridge() {
 	}
 
-	public String getFoodCatalogCategoryBridgeId() {
+	public long getFoodCatalogCategoryBridgeId() {
 		return this.foodCatalogCategoryBridgeId;
 	}
 
-	public void setFoodCatalogCategoryBridgeId(String foodCatalogCategoryBridgeId) {
+	public void setFoodCatalogCategoryBridgeId(long foodCatalogCategoryBridgeId) {
 		this.foodCatalogCategoryBridgeId = foodCatalogCategoryBridgeId;
 	}
 
@@ -63,19 +62,19 @@ public class FoodCatalogCategoryBridge implements Serializable {
 		this.endDate = endDate;
 	}
 
-	public String getFoodCatalogId() {
+	public java.math.BigDecimal getFoodCatalogId() {
 		return this.foodCatalogId;
 	}
 
-	public void setFoodCatalogId(String foodCatalogId) {
+	public void setFoodCatalogId(java.math.BigDecimal foodCatalogId) {
 		this.foodCatalogId = foodCatalogId;
 	}
 
-	public String getFoodCategoryId() {
+	public java.math.BigDecimal getFoodCategoryId() {
 		return this.foodCategoryId;
 	}
 
-	public void setFoodCategoryId(String foodCategoryId) {
+	public void setFoodCategoryId(java.math.BigDecimal foodCategoryId) {
 		this.foodCategoryId = foodCategoryId;
 	}
 

@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class FoodCategory implements Serializable {
 
 	@Id
 	@Column(name="\"foodCategoryId\"")
-	private String foodCategoryId;
+	private long foodCategoryId;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="\"endDate\"")
@@ -33,22 +34,27 @@ public class FoodCategory implements Serializable {
 	@Column(name="\"startDate\"")
 	private Date startDate;
 
+	@ManyToMany(mappedBy="FoodCategoryList",fetch=FetchType.EAGER)
+    private List<FoodCatalog> foodCatalogList;
+	
 	//bi-directional many-to-one association to FoodCatalogCategoryBridge
-	@OneToMany(mappedBy="foodCategory")
+	@OneToMany(mappedBy="foodCategory" ,targetEntity=FoodCatalogCategoryBridge.class,
+		       fetch=FetchType.EAGER)
 	private List<FoodCatalogCategoryBridge> foodCatalogCategoryBridges;
 
 	//bi-directional many-to-one association to FoodItem
-	@OneToMany(mappedBy="foodCategory")
+	@OneToMany(mappedBy="foodCategory" ,targetEntity=FoodItem.class,
+		       fetch=FetchType.EAGER)
 	private List<FoodItem> foodItems;
 
 	public FoodCategory() {
 	}
 
-	public String getFoodCategoryId() {
+	public long getFoodCategoryId() {
 		return this.foodCategoryId;
 	}
 
-	public void setFoodCategoryId(String foodCategoryId) {
+	public void setFoodCategoryId(long foodCategoryId) {
 		this.foodCategoryId = foodCategoryId;
 	}
 
@@ -126,6 +132,14 @@ public class FoodCategory implements Serializable {
 		foodItem.setFoodCategory(null);
 
 		return foodItem;
+	}
+
+	public List<FoodCatalog> getFoodCatalogList() {
+		return foodCatalogList;
+	}
+
+	public void setFoodCatalogList(List<FoodCatalog> foodCatalogList) {
+		this.foodCatalogList = foodCatalogList;
 	}
 
 }

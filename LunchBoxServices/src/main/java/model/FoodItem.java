@@ -2,8 +2,10 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -17,7 +19,7 @@ public class FoodItem implements Serializable {
 
 	@Id
 	@Column(name="\"foodItemId\"")
-	private String foodItemId;
+	private long foodItemId;
 
 	@Column(name="\"calorie\"")
 	private String calorie;
@@ -30,13 +32,10 @@ public class FoodItem implements Serializable {
 	private Date endDate;
 
 	@Column(name="\"foodCategoryId\"")
-	private String foodCategoryId;
+	private BigDecimal foodCategoryId;
 
 	@Column(name="\"foodItemName\"")
 	private String foodItemName;
-
-	@Column(name="\"foodSubcategoryId\"")
-	private String foodSubcategoryId;
 
 	@Column(name="\"ingredient\"")
 	private String ingredient;
@@ -55,19 +54,22 @@ public class FoodItem implements Serializable {
 	private String timeToServer;
 
 	//bi-directional many-to-one association to FoodCategory
-	@ManyToOne
-	@JoinColumns({
-		})
+	@ManyToOne(optional=false)
+    @JoinColumn(name="\"foodCategoryId\"",referencedColumnName="\"foodCategoryId\"")
 	private FoodCategory foodCategory;
+	
+	//bi-directional many-to-one association to OrderItem
+	@OneToMany(mappedBy="foodItem",fetch = FetchType.LAZY)
+	private List<OrderItem> orderItems;
 
 	public FoodItem() {
 	}
 
-	public String getFoodItemId() {
+	public long getFoodItemId() {
 		return this.foodItemId;
 	}
 
-	public void setFoodItemId(String foodItemId) {
+	public void setFoodItemId(long foodItemId) {
 		this.foodItemId = foodItemId;
 	}
 
@@ -95,11 +97,11 @@ public class FoodItem implements Serializable {
 		this.endDate = endDate;
 	}
 
-	public String getFoodCategoryId() {
+	public BigDecimal getFoodCategoryId() {
 		return this.foodCategoryId;
 	}
 
-	public void setFoodCategoryId(String foodCategoryId) {
+	public void setFoodCategoryId(BigDecimal foodCategoryId) {
 		this.foodCategoryId = foodCategoryId;
 	}
 
@@ -109,14 +111,6 @@ public class FoodItem implements Serializable {
 
 	public void setFoodItemName(String foodItemName) {
 		this.foodItemName = foodItemName;
-	}
-
-	public String getFoodSubcategoryId() {
-		return this.foodSubcategoryId;
-	}
-
-	public void setFoodSubcategoryId(String foodSubcategoryId) {
-		this.foodSubcategoryId = foodSubcategoryId;
 	}
 
 	public String getIngredient() {
@@ -165,6 +159,28 @@ public class FoodItem implements Serializable {
 
 	public void setFoodCategory(FoodCategory foodCategory) {
 		this.foodCategory = foodCategory;
+	}
+
+	public List<OrderItem> getOrderItems() {
+		return this.orderItems;
+	}
+
+	public void setOrderItems(List<OrderItem> orderItems) {
+		this.orderItems = orderItems;
+	}
+
+	public OrderItem addOrderItem(OrderItem orderItem) {
+		getOrderItems().add(orderItem);
+		orderItem.setFoodItem(this);
+
+		return orderItem;
+	}
+
+	public OrderItem removeOrderItem(OrderItem orderItem) {
+		getOrderItems().remove(orderItem);
+		orderItem.setFoodItem(null);
+
+		return orderItem;
 	}
 
 }

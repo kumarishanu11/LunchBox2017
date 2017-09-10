@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -16,8 +17,9 @@ public class FoodCatalog implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="\"foodCatalogId\"")
-	private String foodCatalogId;
+	@Column(name="\"foodCatalogId\"", nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long foodCatalogId;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="\"endDate\"")
@@ -32,25 +34,35 @@ public class FoodCatalog implements Serializable {
 
 	@Column(name="\"vendorId\"")
 	private String vendorId;
+	
+	@ManyToMany(fetch=FetchType.EAGER)
+    @JoinTable(name="\"FoodCatalogCategoryBridge\"",
+            joinColumns=
+            @JoinColumn(name="\"foodCatalogId\"", referencedColumnName="\"foodCatalogId\""),
+      inverseJoinColumns=
+            @JoinColumn(name="\"foodCategoryId\"", referencedColumnName="\"foodCategoryId\"")
+    )
+	private List<FoodCategory> FoodCategoryList;
 
 	//bi-directional many-to-one association to Vendor
-	@ManyToOne
-	@JoinColumns({
-		})
+	@ManyToOne(optional=false)
+    @JoinColumn(name="\"vendorId\"",referencedColumnName="\"vendorId\"")
 	private Vendor vendor;
-
+	
 	//bi-directional many-to-one association to FoodCatalogCategoryBridge
-	@OneToMany(mappedBy="foodCatalog")
+	@OneToMany(mappedBy="foodCatalog" ,targetEntity=FoodCatalogCategoryBridge.class ,fetch = FetchType.LAZY)
 	private List<FoodCatalogCategoryBridge> foodCatalogCategoryBridges;
+	
+	
 
 	public FoodCatalog() {
 	}
 
-	public String getFoodCatalogId() {
+	public long getFoodCatalogId() {
 		return this.foodCatalogId;
 	}
 
-	public void setFoodCatalogId(String foodCatalogId) {
+	public void setFoodCatalogId(long foodCatalogId) {
 		this.foodCatalogId = foodCatalogId;
 	}
 
@@ -114,6 +126,14 @@ public class FoodCatalog implements Serializable {
 		foodCatalogCategoryBridge.setFoodCatalog(null);
 
 		return foodCatalogCategoryBridge;
+	}
+
+	public List<FoodCategory> getFoodCategoryList() {
+		return FoodCategoryList;
+	}
+
+	public void setFoodCategoryList(List<FoodCategory> foodCategoryList) {
+		FoodCategoryList = foodCategoryList;
 	}
 
 }
