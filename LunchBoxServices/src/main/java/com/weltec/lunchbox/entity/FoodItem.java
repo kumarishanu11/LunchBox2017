@@ -7,7 +7,7 @@ public class FoodItem {
 	private String description;
 	private String ingredient;
 	private float price;
-	private int calori;
+	private String calori;
 	private int timeToCoock;
 	private int numberOfServe;
 	public int getFoodItemId() {
@@ -46,10 +46,10 @@ public class FoodItem {
 	public void setPrice(float price) {
 		this.price = price;
 	}
-	public int getCalori() {
+	public String getCalori() {
 		return calori;
 	}
-	public void setCalori(int calori) {
+	public void setCalori(String calori) {
 		this.calori = calori;
 	}
 	public int getTimeToCoock() {

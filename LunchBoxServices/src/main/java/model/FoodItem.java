@@ -52,7 +52,7 @@ public class FoodItem implements Serializable {
 	private Date startDate;
 
 	@Column(name="\"timeToServer\"")
-	private String timeToServer;
+	private BigDecimal timeToServer;
 
 	//bi-directional many-to-one association to FoodCategory
 	@ManyToOne(optional=false)
@@ -146,11 +146,11 @@ public class FoodItem implements Serializable {
 		this.startDate = startDate;
 	}
 
-	public String getTimeToServer() {
+	public BigDecimal getTimeToServer() {
 		return this.timeToServer;
 	}
 
-	public void setTimeToServer(String timeToServer) {
+	public void setTimeToServer(BigDecimal timeToServer) {
 		this.timeToServer = timeToServer;
 	}
 
