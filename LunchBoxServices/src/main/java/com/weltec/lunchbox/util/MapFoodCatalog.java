@@ -82,8 +82,12 @@ public class MapFoodCatalog {
 		FoodCatalog foodCatalog = new FoodCatalog();
 		
 		foodCatalog.setFoodCatalogId((int)foodCatalogJPA.getFoodCatalogId());
-		foodCatalog.setFoodCatalogName(foodCatalogJPA.getFoodCatalogName());
-		foodCatalog.setVendorId(foodCatalogJPA.getVendorId());
+		if(foodCatalogJPA.getFoodCatalogName()!=null && !foodCatalogJPA.getFoodCatalogName().isEmpty()){
+			foodCatalog.setFoodCatalogName(foodCatalogJPA.getFoodCatalogName());
+		}
+		if(foodCatalogJPA.getVendorId()!=null && !foodCatalogJPA.getVendorId().isEmpty()){
+			foodCatalog.setVendorId(foodCatalogJPA.getVendorId());
+		}
 		//foodCatalog.setFoodCategoryList((ArrayList<FoodCategory>)foodCatalogJPA.getFoodCategoryList());
 		
 		return foodCatalog;
@@ -93,8 +97,12 @@ public class MapFoodCatalog {
 		FoodCategory foodCategory = new FoodCategory();
 		
 		foodCategory.setFoodCategoryId(foodCategoryJPA.getFoodCategoryId());
-		foodCategory.setFoodCategoryCode(foodCategoryJPA.getFoodCategoryCode());
-		foodCategory.setFoodCategoryName(foodCategoryJPA.getFoodCategoryName());
+		if(foodCategoryJPA.getFoodCategoryCode()!=null && !foodCategoryJPA.getFoodCategoryCode().isEmpty()){
+			foodCategory.setFoodCategoryCode(foodCategoryJPA.getFoodCategoryCode());
+		}
+		if(foodCategoryJPA.getFoodCategoryName()!=null && !foodCategoryJPA.getFoodCategoryName().isEmpty()){
+			foodCategory.setFoodCategoryName(foodCategoryJPA.getFoodCategoryName());
+		}
 		
 		
 		return foodCategory;
@@ -103,15 +111,33 @@ public class MapFoodCatalog {
 	public FoodItem convertToFoodItem(model.FoodItem foodItemJPA){
 		FoodItem foodItem = new FoodItem();
 		
-		foodItem.setCalori(foodItemJPA.getCalorie());
-		foodItem.setDescription(foodItemJPA.getDescription());
-		foodItem.setFoodItemCode(foodItemJPA.getFoodItemName());
+		if(foodItemJPA.getCalorie()!=null && !foodItemJPA.getCalorie().isEmpty()){
+			foodItem.setCalori(foodItemJPA.getCalorie());
+		}
+		if(foodItemJPA.getDescription()!=null && !foodItemJPA.getDescription().isEmpty()){
+			foodItem.setDescription(foodItemJPA.getDescription());
+		}
+		if(foodItemJPA.getFoodItemName()!=null && !foodItemJPA.getFoodItemName().isEmpty()){
+			foodItem.setFoodItemCode(foodItemJPA.getFoodItemName());
+		}
+		
 		foodItem.setFoodItemId((int)foodItemJPA.getFoodItemId());
-		foodItem.setFoodItemName(foodItemJPA.getFoodItemName());
-		foodItem.setIngredient(foodItemJPA.getIngredient());
-		foodItem.setNumberOfServe(foodItemJPA.getNumberOfServe().intValue());
-		foodItem.setPrice(foodItemJPA.getPrice().floatValue());
-		foodItem.setTimeToCoock(foodItemJPA.getTimeToServer().intValue());
+		
+		if(foodItemJPA.getFoodItemName()!=null && !foodItemJPA.getFoodItemName().isEmpty()){
+			foodItem.setFoodItemName(foodItemJPA.getFoodItemName());
+		}
+		if(foodItemJPA.getIngredient()!=null && !foodItemJPA.getIngredient().isEmpty()){
+			foodItem.setIngredient(foodItemJPA.getIngredient());
+		}
+		if(foodItemJPA.getNumberOfServe()!=null ){
+			foodItem.setNumberOfServe(foodItemJPA.getNumberOfServe().intValue());
+		}
+		if(foodItemJPA.getPrice()!=null){
+			foodItem.setPrice(foodItemJPA.getPrice().floatValue());
+		}
+		if(foodItemJPA.getTimeToServer()!=null){
+			foodItem.setTimeToCoock(foodItemJPA.getTimeToServer().intValue());
+		}
 		
 		return foodItem;
 		
