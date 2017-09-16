@@ -35,7 +35,7 @@ public class Order implements Serializable {
 	private java.math.BigDecimal paymentId;
 
 	@Column(name="\"total\"")
-	private String total;
+	private java.math.BigDecimal total;
 
 	//bi-directional many-to-one association to Feedback
 	@OneToMany(mappedBy="order",fetch = FetchType.LAZY)
@@ -98,11 +98,11 @@ public class Order implements Serializable {
 		this.paymentId = paymentId;
 	}
 
-	public String getTotal() {
+	public java.math.BigDecimal getTotal() {
 		return this.total;
 	}
 
-	public void setTotal(String total) {
+	public void setTotal(java.math.BigDecimal total) {
 		this.total = total;
 	}
 
